@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<title></title>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<br><br><br>
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<div class="panel-title">Calculator</div>
+					</div>
+					<div class="panel-body" ng-app="calc" ng-controller="calCtrl">
+						<div class="form-group">
+							<input type="text" class="form-control input-lg" ng-model="result" />
+						</div>
+						<div class="form-group">
+							<div class="btn-group btn-group-justified" role="group">
+								<div class="btn-group">
+									<button type="button" class="btn btn-default" ng-click="num('7')">7</button>
+								</div>
+								<div class="btn-group">
+									<button type="button" class="btn btn-default" ng-click="num('8')">8</button>
+								</div>
+								<div class="btn-group">
+									<button type="button" class="btn btn-default" ng-click="num('9')">9</button>
+								</div>
+								<div class="btn-group">
+									<button type="button" class="btn btn-default" ng-click="opr('/')">/</button>
+								</div>
+								<div class="btn-group">
+									<button type="button" class="btn btn-default"><-</button>
+								</div>
+								<div class="btn-group">
+									<button type="button" class="btn btn-default" ng-click="clr()">X</button>
+								</div>
+							</div>
+							<div class="btn-group btn-group-justified" role="group">
+								<div class="btn-group">
+									<button type="button" class="btn btn-default" ng-click="num('4')">4</button>
+								</div>
+								<div class="btn-group">
+									<button type="button" class="btn btn-default" ng-click="num('5')">5</button>
+								</div>
+								<div class="btn-group">
+									<button type="button" class="btn btn-default" ng-click="num('6')">6</button>
+								</div>
+								<div class="btn-group">
+									<button type="button" class="btn btn-default" ng-click="opr('*')">x</button>
+								</div>
+								<div class="btn-group">
+									<button type="button" class="btn btn-default" ng-click="opr('(')">(</button>
+								</div>
+								<div class="btn-group">
+									<button type="button" class="btn btn-default" ng-click="opr(')')">)</button>
+								</div>
+							</div>
+							<div class="btn-group btn-group-justified" role="group">
+								<div class="btn-group">
+									<button type="button" class="btn btn-default" ng-click="num('1')">1</button>
+								</div>
+								<div class="btn-group">
+									<button type="button" class="btn btn-default" ng-click="num('2')">2</button>
+								</div>
+								<div class="btn-group">
+									<button type="button" class="btn btn-default" ng-click="num('3')">3</button>
+								</div>
+								<div class="btn-group">
+									<button type="button" class="btn btn-default" ng-click="opr('-')">-</button>
+								</div>
+								<div class="btn-group">
+									<button type="button" class="btn btn-default">X<sup>2</sup></button>
+								</div>
+								<div class="btn-group">
+									<button type="button" class="btn btn-default">/</button>
+								</div>
+							</div>
+							<div class="btn-group btn-group-justified" role="group">
+								<div class="btn-group">
+									<button type="button" class="btn btn-default" ng-click="num('0')">0</button>
+								</div>
+								<div class="btn-group">
+									<button type="button" class="btn btn-default" ng-click="num('.')">.</button>
+								</div>
+								<div class="btn-group">
+									<button type="button" class="btn btn-default" ng-click="opr('%')">%</button>
+								</div>
+								<div class="btn-group">
+									<button type="button" class="btn btn-default" ng-click="opr('+')">+</button>
+								</div>
+								<div class="btn-group">
+									<button type="button" class="btn btn-default">&nbsp;</button>
+								</div>
+								<div class="btn-group">
+									<button type="button" class="btn btn-success" ng-click="cal()">=</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+	var app = angular.module('calc',[]);
+	app.controller('calCtrl',function($scope){
+		$scope.result = '';
+
+		$scope.cal = function() {
+			$scope.result = eval($scope.result);
+			return $scope.result;
+		}
+
+		$scope.num = function(x) {
+			$scope.result = $scope.result + x;
+			return $scope.result; 
+		}
+
+		$scope.opr = function(x) {
+			$scope.result = $scope.result + ' ' + x + ' ';
+			return $scope.result; 
+		}
+
+		$scope.clr = function() {
+			$scope.result = '';
+			return $scope.result;
+		}
+	});
+	</script>
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
